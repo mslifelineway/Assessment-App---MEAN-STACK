@@ -1,0 +1,42 @@
+
+@import 'src/styles.scss';
+
+.user-name {
+    color: $blue;
+}
+
+.new-assessment {
+    position: absolute;
+    right: 40px;
+    top: 20px;
+    background-color: $primary;
+    padding: 10px 30px;
+    border-radius: 25px;
+    color: white;
+    font-weight: bold;
+}
+
+.body-content {
+    background-color: white;
+    position: relative;
+}
+
+.assessments-container {
+    margin-top: 30px;
+}
+
+.assessment-title span {
+    font-size: 30px;
+    // color: $blue;
+    color: green;
+}
+
+.assessment-tem a {
+    font-size: 20px;
+    color: black;
+
+    &:hover {
+        color: $blue;
+
+    }
+}

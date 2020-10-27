@@ -1,0 +1,87 @@
+@import "src/styles.scss";
+
+.assessment-name-section {
+    label {
+        font-size: 20px;
+        margin-right: 20px;
+    }
+
+    input {
+        width: 60%;
+    }
+}
+
+.questions-container {
+    margin-top: 30px;
+
+    .question-item {
+        border: 1px solid #cccccc;
+        padding: 20px;
+
+        .question-type-switch {
+            margin-top: 20px;
+            margin-left: 30px;
+            display: flex;
+            align-items: center;
+            span {
+                font-weight: 600;
+                font-size: 20px;
+                color: $blue;
+                margin-right: 10px;
+            }
+        }
+
+        .choices {
+            padding: 10px;
+
+            .choice-item {
+                display: grid;
+                grid-column-gap: 20px;
+                grid-template-columns: auto auto;
+
+                div {
+                    margin: 10px;
+                    display: flex;
+                    align-items: center;
+
+                    input[type="checkbox"] {
+                        visibility: hidden;
+                    }
+
+                    input[type="checkbox"] + label:before {
+                        border: 1px solid #ccc;
+                        content: "\00a0";
+                        display: inline-block;
+                        font: 20px/1.5em sans-serif;
+                        height: 30px;
+                        // margin: 0.25em 0 0;
+                        padding: 0;
+                        vertical-align: top;
+                        width: 30px;
+                        margin-right: 5px;
+                        border-radius: 5px;
+                    }
+
+                    input[type="checkbox"]:checked + label:before {
+                        background: $primary;
+                        color: white;
+                        content: "\2713";
+                        text-align: center;
+                    }
+
+                    input[type="checkbox"]:checked + label:after {
+                        font-weight: bold;
+                    }
+
+                    input[type="checkbox"]:focus + label::before {
+                        outline: rgb(59, 153, 252) auto 100px;
+                    }
+
+                    label {
+                        margin-bottom: 0;
+                    }
+                }
+            }
+        }
+    }
+}

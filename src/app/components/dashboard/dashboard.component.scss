@@ -1,0 +1,144 @@
+@import "../../../styles.scss";
+
+.user-name {
+    color: $blue;
+}
+
+.body-content {
+    position: relative;
+}
+
+.timer {
+    position: absolute;
+    right: 40px;
+    top: 20px;
+    background-color: $primary;
+    padding: 10px 30px;
+    border-radius: 25px;
+    color: white;
+    font-weight: bold;
+}
+.assessment-title .assessment {
+    font-size: 30px;
+    color: $blue;
+}
+
+.questions-list-container {
+    display: flex;
+    margin-top: 30px;
+}
+
+.questions-item {
+    background-color: $navbarColor;
+    padding: 5px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    color: $primary;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    font-weight: 600;
+    border: 1px solid #ccc;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+// .question-selected {
+//     border: 2px solid $primary;
+// }
+
+.question-selected {
+    background-color: $primary;
+    color: white;
+    border: 1px solid #ccc;
+}
+
+.question-preview-container {
+    margin: 10px;
+    margin-top: 30px;
+
+    .question span {
+        font-size: 22px;
+        color: black;
+    }
+
+    
+}
+
+.options-container {
+    margin: 20px;
+
+
+    input[type="checkbox"] {
+        visibility: hidden;
+    }
+
+    input[type="checkbox"] + label:before {
+        border: 1px solid #ccc;
+        content: "\00a0";
+        display: inline-block;
+        font: 20px/1.5em sans-serif;
+        height: 30px;
+        // margin: 0.25em 0 0;
+        padding: 0;
+        vertical-align: top;
+        width: 30px;
+        margin-right: 5px;
+        border-radius: 5px;
+    }
+
+    input[type="checkbox"]:checked + label:before {
+        background: $primary;
+        color: white;
+        content: "\2713";
+        text-align: center;
+    }
+
+    input[type="checkbox"]:checked + label:after {
+        font-weight: bold;
+    }
+
+    input[type="checkbox"]:focus + label::before {
+        outline: rgb(59, 153, 252) auto 100px;
+    }
+
+    label {
+        margin-bottom: 0;
+    }
+    
+    .options-item {
+        margin-bottom: 15px;
+    }
+
+    .option-count {
+        font-size: 20px;
+        margin-right: 10px;
+    }
+    .options-item .option {
+        border: 1px solid #ccc;
+        background-color: $navbarColor;
+        padding: 5px 20px;
+        border-radius: 15px;
+        cursor: pointer;
+
+        &:hover {
+            background-color: $blue;
+            color: white;
+        }
+
+        &:active {
+            background-color: $blue;
+            color: white;
+        }
+    }
+
+
+    
+}
+
+.buttons-container {
+    margin-top: 50px;
+    width: 80%;
+}

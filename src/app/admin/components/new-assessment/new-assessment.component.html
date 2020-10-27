@@ -1,0 +1,93 @@
+<nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+        <a class="navbar-item" [routerLink]="['/admin/dashboard']">
+            <img src="" alt="Logo" width="112" height="28">
+        </a>
+    </div>
+    <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-start">
+            <div class="navbar-item">
+                <p class="navbar-title">Assessment App</p>
+            </div>
+        </div>
+        <div class="navbar-end">
+            <div class="navbar-item">
+                <div class="buttons">
+                    <p class="user-name">{{currentAdmin.email}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- body content -->
+<div class="body-content-container">
+    <div class="body-content">
+        <form (ngSubmit)="createAssessment($event)">
+            <div class="assessment-name-section">
+                <label>Assessment Name</label>
+                <input class="input" type="text" placeholder="Enter assessment name" name="name" [(ngModel)]="assessment.name" required>
+            </div>
+            <div class="questions-container">
+                <!-- dynamic question fields -->
+                <!-- Question Item -->
+
+                <div class="question-item form-group" *ngFor="let question of assessment.questions; let i=index">
+                    <div class="assessment-name-section">
+                        <label>Question {{i+1}}.</label>
+                        <input [(ngModel)]="question.question" name="question{{i}}" class="input"
+                            type="text" placeholder="write a question" required>
+                    </div>
+                    <div class="question-type-switch">
+                        <span style="color: #e37e57;">Boolean choices </span>
+                        <ui-switch name="questionType{{i}}" [(ngModel)]="question.isQuestionTypeBoolean"></ui-switch>
+                    </div>
+                    <div class="choices" name="choice{{i}}"
+                        *ngIf="question.isQuestionTypeBoolean; else notBooleanChoices">
+                        <div class="choice-item">
+                            <div class="question-type-switch">
+                                <span class="" style="color: #70d36d ;">Your Answer : </span>
+                                <div class="boolean-answer">
+                                    <span>False </span>
+                                    <ui-switch name="questionType{{i}}" [(ngModel)]="question.choices[0].isTrue">
+                                    </ui-switch>
+                                    <span>True </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <ng-template #notBooleanChoices>
+                        <div class="choices">
+                            <div class="choice-item">
+                                <div *ngFor="let choice of question.choices; let j=index">
+                                    <input type="checkbox" id="isTrue{{i}}{{j}}" name="isTrue{{i}}{{j}}"
+                                        [checked]="choice.isTrue" [(ngModel)]="choice.isTrue" />
+                                    <label for="isTrue{{i}}{{j}}"></label>
+                                    <input class="input" name="name{{i}}{{j}}" type="text" placeholder="choice {{j+1}}"
+                                        [(ngModel)]="choice.name">
+                                </div>
+                            </div>
+                        </div>
+                    </ng-template>
+                </div>
+                <div *ngIf="questionArray?.length < 10" class="submit-button" style="width: 100%; text-align: center;">
+                    <span (click)="addNewQuestion()" class="button is-warning is-pulled-right"
+                        style="margin-right: 40px; margin-top: 20px;">Add
+                        More</span>
+                </div><br>
+
+                <div class="submit-button" style="width: 100%; text-align: center;">
+                    <button type="submit" class="button is-success is-pulled-center"
+                        style="margin-right: 40px; margin-top: 20px;">Create</button>
+                </div>
+                <div class="db-info" *ngIf="message" style="margin: 0 auto; margin-top: 20px; text-align: center; width: 50%;">
+                    <span class="message" style="color: indianred;">{{message}}</span>
+                </div>
+
+                <!-- dynamic question fields  end -->
+
+            </div>
+        </form>
+        <!-- body container - End  -->
+    </div>
+</div>

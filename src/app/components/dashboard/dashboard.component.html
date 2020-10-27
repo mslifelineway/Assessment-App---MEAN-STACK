@@ -1,0 +1,115 @@
+<nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+        <a class="navbar-item" href="#">
+            <img src="" alt="Logo" width="112" height="28">
+        </a>
+    </div>
+    <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-start">
+            <div class="navbar-item">
+                <p class="navbar-title">Assessment App</p>
+            </div>
+        </div>
+        <div class="navbar-end">
+            <div class="navbar-item">
+                <div class="buttons">
+                    <a class="user-name" [routerLink]="['/assessments/',email,'show-result']">{{email}}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- body content -->
+<div class="body-content-container">
+
+    <ng-template #assessmentNotExists>
+        <div class="body-content">
+
+            <h2 style="font-size: 18px;">The assessment couldn't found! Either assessment has deleted by the creator or
+                not found cause of internal issues. <br>
+                please contact to the Admin/Creator. </h2>
+        </div>
+    </ng-template>
+
+
+    <div class="body-content" *ngIf="(assessment | json) != '{}' ; else assessmentNotExists">
+        <div class="timer">
+            <span>Time Left: {{timeLeft}}</span>
+        </div>
+        <div class="assessment-title">
+            <span class="assessment">{{assessment.name}}</span>
+        </div>
+        <!-- questions in a list -->
+        <div class="questions-list-container">
+            <!-- question item -->
+            <div class="questions-item" [ngClass]="{'question-selected': question._id === assessment.questions[i]._id}"
+                routerLinkActive="active" *ngFor="let questionObjec of assessment.questions; let i=index">
+                <span>{{i+1}}</span>
+            </div>
+        </div>
+        <form (ngSubmit)="onSubmit($event)">
+            <div class="question-preview-container">
+                <div class="question">
+                    <span>
+                        {{questionIndex+1}}. {{question.question}}
+                    </span>
+                </div>
+
+                <div *ngIf="question.isQuestionTypeBoolean; else notBooleanChoices">
+                    <div class="options-container">
+
+                        <div *ngFor="let choice of question.choices; let i=index; " style="margin-bottom: 10px;">
+                            <div class="choice-item">
+                                <div class="question-type-switch">
+                                    <div class="boolean-answer">
+                                        <span>False </span>
+                                        <ui-switch style="color: 00d1b2;" name="choice"
+                                            (change)="booleanSwitch($event, choice._id)" [checked]="choice.isTrue"
+                                            [(ngModel)]="choice.isTrue">
+                                        </ui-switch>
+                                        <span>True </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <ng-template #notBooleanChoices>
+                    <div class="options-container">
+                        <div *ngFor="let choice of question.choices; let i=index; " style="margin-bottom: 10px;">
+                            <input type="checkbox" id="isTrue{{i}}" name="isTrue{{i}}" [checked]="choice.isTrue"
+                                [(ngModel)]="choice.isTrue" (change)="checkboxChanged($event, choice._id)" />
+                            <label for="isTrue{{i}}">{{choice.name}}</label>
+                        </div>
+                    </div>
+                </ng-template>
+
+                <div *ngIf="isTimerStarted; else buttonsContainer" style="display: flex; flex-direction: column;">
+                    <div class="buttons-container" *ngIf="!(minute < 1 && second < 1)">
+                        <span class="previous-button button is-danger" *ngIf="(questionIndex+1) > 1"
+                            (click)="previousQuestion()">
+                            Previous</span>
+                        <span *ngIf="(questionIndex+1) < assessment.questions?.length"
+                            class="next-button button is-primary is-pulled-right" (click)="nextQuestion()">Next</span>
+                    </div>
+                    <div class="buttons-container" style="margin-top: 50px; display: flex; justify-content: center;">
+                        <button type="submit" class="next-button button is-danger ">Submit</button>
+                    </div>
+                </div>
+                <ng-template #buttonsContainer>
+                    <div class="buttons-container" style="margin-top: 50px;">
+                        <span class="next-button button is-danger is-pulled-right" (click)="startTest()">Start
+                            Test</span>
+                    </div>
+                </ng-template>
+            </div>
+            <div class="error-info">
+                <span class="has-text-danger">{{errorInfo}}</span>
+            </div>
+        </form>
+        <!-- body container - End  -->
+    </div>
+</div>

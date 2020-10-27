@@ -1,0 +1,37 @@
+<nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+        <a class="navbar-item" href="#">
+            <img src="" alt="Logo" width="112" height="28">
+        </a>
+    </div>
+    <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-start">
+            <div class="navbar-item">
+                <p class="navbar-title">Assessment App</p>
+            </div>
+        </div>
+        <div class="navbar-end">
+            <div class="navbar-item">
+                <div class="buttons">
+                    <a class="user-name" [routerLink]="['/assessments/',email,'show-result']">{{email}}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- body content -->
+<div class="body-content-container">
+    <div class="body-content">
+        <div class="assessment-title">
+            <span>Select an assessement</span>
+        </div>
+        <!-- aseessments -->
+        <div class="assessments-container">
+            <div class="assessment-item" *ngFor="let assessement of assessments; let i=index">
+                <a [routerLink]="['../../dashboard', email, assessement._id]" class="assessement"> {{i+1}}. {{assessement.name}}</a>
+            </div>
+        </div>
+        <!-- body container - End  -->
+    </div>
+</div>

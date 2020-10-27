@@ -1,0 +1,43 @@
+@import "src/styles.scss";
+
+.result-text {
+    font-size: 25px;
+}
+
+a.user-name {
+    color: $blue;
+
+    &:hover {
+        color: #68b9e7;
+    }
+}
+
+.assessments-list-container {
+    margin: 20px 50px;
+
+    .assessment {
+        display: flex;
+        flex-direction: column;
+
+        .assessment-name {
+            font-size: 20px;
+            color: $blue;
+        }
+
+        .details {
+            padding-top: 20px;
+            padding-left: 50px;
+
+           .columns .column {
+                background-color: #fafafa;
+                padding: 30px;
+                border: 1px solid #d2d2d2;
+                margin: 10px;
+                text-align: center;
+                display: flex;
+                flex-direction: column;
+
+            }
+        }
+    }
+}

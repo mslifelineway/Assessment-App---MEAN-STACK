@@ -1,0 +1,40 @@
+<nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+        <a class="navbar-item" href="#">
+            <img src="" alt="Logo" width="112" height="28">
+        </a>
+    </div>
+    <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-start">
+            <div class="navbar-item">
+                <p class="navbar-title">Assessment App</p>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- body content -->
+<div class="body-content-container">
+    <div class="centered-content">
+        <div class="modal-box">
+            <h1 class="content-header">
+                Admin Login
+            </h1>
+            <div class="form-field"
+                style="width: 100%; display: flex; flex-direction: column; text-align: center; justify-content: center;">
+                <input #emailInput class="input" type="email" placeholder="Enter your email" style="margin: 0 auto;">
+                <span class="has-text-danger">{{emailError}}</span>
+            </div>
+            <div class="form-field"
+                style="width: 100%; display: flex; flex-direction: column; text-align: center; justify-content: center;">
+                <input #passwordInput class="input" type="password" placeholder="Enter your password" style="margin: 0 auto;">
+                <span class="has-text-danger">{{passwordError}}</span>
+            </div>
+            <br><button class="button is-primary is-pulled-center"
+                (click)="loginAdmin(emailInput.value, passwordInput.value)">
+                Log in
+            </button><br><br>
+            <span class="has-text-danger">{{loginInfo}}</span>
+        </div>
+    </div>
+</div>

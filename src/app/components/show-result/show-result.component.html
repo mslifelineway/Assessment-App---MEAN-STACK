@@ -1,0 +1,53 @@
+<nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+        <a class="navbar-item" href="#">
+            <img src="" alt="Logo" width="112" height="28">
+        </a>
+    </div>
+    <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-start">
+            <div class="navbar-item">
+                <p class="navbar-title">Assessment App</p>
+            </div>
+        </div>
+        <div class="navbar-end">
+            <div class="navbar-item">
+                <div class="buttons">
+                    <a class="user-name" [routerLink]="['/assessments/',email,'show-result']">{{email}}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- body content -->
+<div class="body-content-container">
+    <div class="body-content">
+        <h1 class="result-text">Results : </h1>
+
+        <div class="assessments-list-container">
+            <!-- item-->
+            <div class="assessment" *ngFor="let showResult of showResultArray">
+                <p class="assessment-name">{{showResult.assessment.name}} </p>
+                <div class="details">
+                    <div class="columns">
+                        <div class="column">
+                            <span class="scored">Scored<br> {{showResult.userAssessment.scored | json}}</span>
+                        </div>
+                        <div class="column">
+                            <span class="attempted">Attempted : <br> {{showResult.userAssessment.attempted | json}}</span>
+                        </div>
+                        <div class="column">
+                            <span class="correct">Wrong Answer <br> {{showResult.userAssessment.wrong | json}}</span>
+                        </div>
+                    </div>
+                    
+                </div>
+
+            </div>
+
+            
+        </div>
+
+    </div>
+</div>

@@ -1,1 +1,86 @@
 /* You can add global styles to this file, and also import other style files */
+
+
+@import "../node_modules/bulma/bulma.sass";
+@import '~ngx-ui-switch/ui-switch.component.scss';
+//DEFAULT CSS (GLOBAL CSS)
+
+$primary: #00d1b2;
+$blue: #3298dc;
+$bodyColor: #f1f1f1;
+$navbarColor: #e4e4e4;
+$bodyContentColor: #ececec;
+$family-sans-serif: "Nunito", sans-serif;
+$redColor: #f03a5f;
+
+html {
+    background: linear-gradient(to right top, $bodyColor, #f1f1f1);
+    font-family: $family-sans-serif,
+}
+
+html,
+body {
+    height: 100%;
+    overflow: auto;
+}
+
+.custom-yellow-box-shadow {
+    box-shadow: 0 0.5em 1em -0.125em rgba(225, 228, 91, 1), 0 0px 0 1px rgba(225, 228, 91, 0.5);
+}
+
+
+/** GLOBAL CSS FOR NAVBAR HOMEPAGE THAT MIGHT USED IN OTHER COMPONENTS **/
+
+.navbar {
+    padding: 0 20%;
+    // background-color: $navbarColor;
+    background-color: #5cf3ff;
+}
+.navbar-item {
+    font-size: 20px;
+}
+.navbar-title {
+    font-size: 30px;
+    font-weight: 500;
+    width: 100%;
+    text-align: center;
+}
+
+.navbar-item .buttons button {
+    // background-color: $blue;
+    background-color: transparent;
+    color: black;
+    font-weight: 700;
+}
+
+.body-content-container {
+    width: 100%;
+}
+
+.body-content {
+    margin: 0 auto;
+    width: 60%;
+    height: 60%;
+    min-height: 100%;
+    background-color: white;
+    padding: 60px;
+    padding-bottom: 80px;
+    margin-top: 20px;
+}
+
+.content-header {
+    font-size: 30px;
+    width: 50%;
+
+}
+
+.form-field input {
+    width: 100%;
+    margin-right: 10px;
+
+}
+.form-field {
+    width: 60%;
+    margin-top: 30px;
+    display: flex;
+}

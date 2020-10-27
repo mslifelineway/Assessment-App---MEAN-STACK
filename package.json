@@ -19,6 +19,10 @@
     "@angular/platform-browser": "~10.1.4",
     "@angular/platform-browser-dynamic": "~10.1.4",
     "@angular/router": "~10.1.4",
+    "bulma": "^0.9.1",
+    "bulma-switch": "^2.0.0",
+    "ngx-ui-switch": "^10.0.2",
+    "nodemon": "^2.0.6",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"
